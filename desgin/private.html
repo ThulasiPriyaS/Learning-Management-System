@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Private Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .file-box {
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .file-box label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+    
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .file-list li {
+            margin-bottom: 10px;
+        }
+        .file-list li a {
+            text-decoration: none;
+            color: #333;
+        }
+        /* Styling for file upload button */
+        #file {
+            display: none; /* Hide the default file input */
+        }
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 20px;
+            cursor: pointer;
+            background-color: #8e44ad;
+            color: white;
+            border-radius: 5px;
+            width: 100px; /* Allow the button to adjust its width based on content */
+            text-align: center; /* Center the text within the button */
+        }
+        .custom-file-upload:hover {
+            background-color: #8e44ad;
+        }
+        #submit {
+            display: inline-block; /* Change display to inline-block */
+            vertical-align: middle; /* Align vertically with adjacent elements */
+            margin-top: 2px; /* Adjust top margin */
+            padding: 8px 22px;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100px;
+            font-weight: bold;
+        }
+        #submit:hover {
+            background-color: #45a049;
+        }
+        #uploadText {
+            display: inline-block; /* Ensure the text is inline with the button */
+            vertical-align: middle; /* Align vertically with adjacent elements */
+            margin-right: 10px; /* Add right margin */
+        }
+    </style>
+</head>
+<body>
+    <h1>Private Files</h1>
+    <div class="file-box">
+        <p id="noAttachmentText">No attachments uploaded yet</p>
+        <p id="attachmentUploadedText" style="display: none;">An attachment has been uploaded</p>
+        <form action="#" method="post" enctype="multipart/form-data" id="uploadForm">
+            <label for="file">Choose file to add:</label>
+            <input type="file" id="file" name="file" onchange="displayFileName(this)">
+            <label for="file" class="custom-file-upload">Choose File</label>
+            <span id="fileName"></span>
+    <div class="submit-box">
+        <p style="margin-bottom: 30px;"></p>
+        <label id="uploadText" for="submit">Upload File:</label> <!-- Added label for upload text -->
+        <input type="submit" id="submit" value="Upload">
+    </div>
+        </form>
+    </div>
+
+    <script>
+        function displayFileName(input) {
+            var fileName = input.files[0].name;
+            document.getElementById('fileName').innerHTML = fileName;
+            document.getElementById('noAttachmentText').style.display = 'none';
+            document.getElementById('attachmentUploadedText').style.display = 'block';
+        }
+    </script>
+    <script src="assets/js/main.js"></script> 
+</body>
+</html>

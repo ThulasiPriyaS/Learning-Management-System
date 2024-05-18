@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            background-image: url("images/generate-a-minimalist-horizontal-background-image-with-a-purple-color-theme-the-image-should-featu-95670095.jpeg"); /* Set background image */
+            background-size: 800px; /* Cover the entire viewport */
+            background-position: center; /* Center the background image */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay with transparency */
+        }
+
+        .lms-text {
+            position: absolute;
+            top: 30px;
+            left: 55px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #ffffff;
+            z-index: 1;
+        }
+
+        .create-text {
+            position: absolute;
+            top: 300px;
+            left: 200px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #ffffff;
+            z-index: 1;
+        }
+
+        .signup-container {
+            position: relative;
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent white */
+            padding: 60px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Glass morphism effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Border color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            z-index: 1;
+            margin-left: auto; /* Move slightly to the right */
+            margin-right: 90px; /* Add some space on the right */
+            margin-top: 30px;
+        }
+
+        .signup-container h2 {
+            font-family: 'Poppins',sans-serif;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 0px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .signup-form input[type="text"],
+        .signup-form input[type="password"],
+        .signup-form input[type="email"],
+        .signup-form input[type="number"] {
+            width: 94%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 0px solid #cccccc;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white */
+        }
+
+        .signup-form input[type="text"]:focus,
+        .signup-form input[type="password"]:focus,
+        .signup-form input[type="email"]:focus,
+        .signup-form input[type="number"]:focus {
+            border-color: #007bff;
+        }
+
+        .signup-form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .signup-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-link a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .signup-link a:hover {
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="create-text">Create Account</div>
+    <div class="signup-container">
+        <h2>REGISTER</h2>
+        <form class="signup-form" action="C:\Users\Thulasi Priya\Downloads\front-end - online courses website\desgin\home.html" method="POST" onsubmit="redirectToHomePage()">
+            <input type="text" name="firstname" placeholder="First Name" required>
+            <input type="text" name="lastname" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="phone" placeholder="Phone Number" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Sign Up">
+            <div class="signup-link">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </form>
+    </div>
+
+   
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url("images/DEPT/WhatsApp Image 2024-03-26 at 1.20.25 PM (1).jpeg"); /* Background image */
+            
+            background-position: left;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .login-container {
+            position: relative;
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent white */
+            padding: 60px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Glass morphism effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Border color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            z-index: 1;
+            margin-left: auto; /* Move slightly to the right */
+            margin-right: 105px; /* Add some space on the right */
+        }
+
+        .login-container h2 {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 0px;
+            color: #ffffff;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 94%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 0px solid #cccccc;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white */
+        }
+
+        .login-form input[type="text"]:focus,
+        .login-form input[type="password"]:focus {
+            border-color: #007bff;
+        }
+
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .login-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .remember-forgot {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .remember-forgot a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .signup-link a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .signup-link a:hover {
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>WELCOME</h2>
+        <form class="login-form" action="home.html" method="POST">
+            <input type="text" name="username" placeholder="Email or Phone" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+            </div>
+            <p style="margin-bottom: 30px;"></p>
+            <div class="forgot-password">
+                Don't remember your password?<a href="forgot_pw.html"> Forgot password?</a> 
+            </div>
+            <div class="signup-link">
+                Don't have an account? <a href="register.html">Sign up</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

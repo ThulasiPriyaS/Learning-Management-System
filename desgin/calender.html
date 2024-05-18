@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color:#8e44ad ;
+    }
+    .calendar {
+        width: 100%;
+        max-width: 800px; /* Adjust max-width as needed */
+        margin: auto;
+        padding: 20px;
+    }
+    .month {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .month h1 {
+        font-size: 24px;
+        margin: 0;
+        color: #070704;
+    }
+    .prev-month, .next-month {
+        cursor: pointer;
+        color: #010101;
+    }
+    .dates {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        color: #131310;
+    }
+    .date {
+        background-color: #f7f7f7;
+        border: 1px solid #fefdff;
+        padding: 30px; /* Adjust padding to increase box size */
+        text-align: center;
+        position: relative; /* Added for positioning */
+    }
+    .note-popup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        z-index: 999;
+    }
+    .note-popup textarea {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+    .note {
+        font-size: 12px;
+        margin-top: 5px;
+        color: #000000;
+    }
+</style>
+</head>
+<body>
+<div class="calendar">
+    <div class="month">
+        <div class="prev-month">&lt;</div>
+        <h1 id="current-month">March 2024</h1>
+        <div class="next-month">&gt;</div>
+    </div>
+    <div class="dates" id="calendar-dates">
+        <!-- Dates will be populated here dynamically using JavaScript -->
+    </div>
+</div>
+
+<div class="note-popup" id="note-popup">
+    <textarea id="notes-text" rows="4" cols="30"></textarea>
+    <button id="add-notes-btn">OK</button>
+    <button id="delete-note-btn">DELETE</button>
+</div>
+
+<script>
+    // Function to generate calendar dates for a given month and year
+    function generateCalendar(month, year) {
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+
+        const calendarDates = document.getElementById("calendar-dates");
+        calendarDates.innerHTML = "";
+
+        for (let i = 0; i < firstDay; i++) {
+            calendarDates.innerHTML += '<div class="date"></div>';
+        }
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dateBox = document.createElement('div');
+            dateBox.classList.add('date');
+            dateBox.innerHTML = i;
+            dateBox.setAttribute('data-date', i);
+            dateBox.addEventListener('click', function() {
+                showNotePopup(i);
+            });
+            calendarDates.appendChild(dateBox);
+        }
+    }
+
+    // Initial call to generate calendar for March 2024
+    generateCalendar(2, 2024);
+
+    // Function to show the note popup
+    function showNotePopup(day) {
+        document.getElementById('note-popup').style.display = 'block';
+        document.getElementById('notes-text').value = ""; // Clear any previous input
+        document.getElementById('add-notes-btn').onclick = function() {
+            const notes = document.getElementById('notes-text').value;
+            // Here you can store the notes or perform any other action with them
+            console.log("Notes for day " + day + ": " + notes);
+            closeNotePopup();
+            const dateBox = document.querySelector('.date[data-date="' + day + '"]');
+            const existingNote = dateBox.querySelector('.note');
+            if (existingNote) {
+                existingNote.textContent = notes;
+            } else {
+                const noteElement = document.createElement('div');
+                noteElement.classList.add('note');
+                noteElement.textContent = notes;
+                dateBox.appendChild(noteElement);
+            }
+        };
+        document.getElementById('delete-note-btn').onclick = function() {
+            const dateBox = document.querySelector('.date[data-date="' + day + '"]');
+            const existingNote = dateBox.querySelector('.note');
+            if (existingNote) {
+                existingNote.remove();
+                closeNotePopup();
+            }
+        };
+    }
+
+    // Function to close the note popup
+    function closeNotePopup() {
+        document.getElementById('note-popup').style.display = 'none';
+    }
+
+    // Function to handle navigation to previous month
+    document.querySelector(".prev-month").addEventListener("click", function() {
+        const currentMonthYear = document.getElementById("current-month").textContent.split(" ");
+        const month = new Date(currentMonthYear[0] + " 1, " + currentMonthYear[1]);
+        month.setMonth(month.getMonth() - 1);
+        document.getElementById("current-month").textContent = month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        generateCalendar(month.getMonth(), month.getFullYear());
+    });
+
+    // Function to handle navigation to next month
+    document.querySelector(".next-month").addEventListener("click", function() {
+        const currentMonthYear = document.getElementById("current-month").textContent.split(" ");
+        const month = new Date(currentMonthYear[0] + " 1, " + currentMonthYear[1]);
+        month.setMonth(month.getMonth() + 1);
+        document.getElementById("current-month").textContent = month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        generateCalendar(month.getMonth(), month.getFullYear());
+    });
+</script>
+</body>
+</html>
